@@ -1,0 +1,53 @@
+/* select all elements */
+* { padding: 0; margin: 0  }
+
+/* select all top-level heading elements */
+h1 { font-size: 150%; padding: 1em; background-color: black; color: white; }
+
+/* select all second-level heading elements are are children of a section of the "major-section" class */
+section.major-section > h2 { font-size: 125%; background-color: blue; color:  white; padding: .5em 2em;}
+
+/* select all section elements */
+section { background-color: lightgray; font-size:  1rem; padding:  .5em 3em;}
+
+/* select all elements that are children of an article */
+article > * { margin-left: 3em; }
+
+/* select all sections that are of the major-section class */
+section.major-section { background-color: #efe; padding: 0 0 .5em 0; }
+
+/* select all sections that are of the minor-section class */
+section.minor-section { font-family: monospace; font-size: 90%; }
+
+/* select all spans that are of both the org and public classes */
+span.org.public { font-weight: bold; }
+
+/* select all spans that are of both the org and private classes */
+span.org.private { font-style: italic; }
+
+/* select all spans that are of the org class */
+span.org { font-family: cursive; }
+
+/* select all spans that are of the qty class and that are children of an article of the minor-section class */
+article.minor-section > span.qty { text-decoration: underline; }
+
+/* select all paragraphs that follow immediately after a paragraph that is a child of an article */
+article > p + p { color:  darkblue; }
+
+/* select all third-level heading */
+h3 { background-color: lightblue; color: black; padding:  .5em; margin:  0}
+
+/* select all third-level headings that are children of an article of the headliner class */
+article.headliner > h3 { font-family: monospace; font-size: 250%; font-weight: bold; color: red; background-color:  white}
+
+/* select all spans that are of the qty class and that are descendants of a section that is of the minor-section class */
+section.minor-section span.qty { text-decoration: underline; }
+
+/* select all footer elements */
+footer { position: absolute; bottom: 0; left: 0; text-align: center; height: 2em; padding: .5em; width: 100%;}
+
+/* select all paragraphs that are siblings of an article and that occur after an article */
+article ~ p { margin-left: 3em; margin-top: 2em; margin-bottom: 1em; }
+
+/* select all paragraphs that are of the ad class */
+p.ad { font-style: italic; font-weight: bold; }
