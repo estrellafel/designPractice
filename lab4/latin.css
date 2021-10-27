@@ -1,0 +1,32 @@
+body {
+    counter-reset: main-counter 0;
+    padding: 50px;
+}
+
+section {
+    counter-increment: main-counter 1;
+}
+
+h2::before {
+    content: "Part " counter(main-counter) ": ";
+    color: gold;
+}
+
+h2 {
+    font-weight: bold;
+}
+
+.drop-caps p:first-of-type::first-letter {
+    color: darkorange;
+    font-size: 45px;
+    float: left;
+    font-family: Italianno;
+    font-weight: bold;
+    margin-right: 15px;
+    text-shadow: 1px 1px gray;
+}
+
+@font-face {
+    font-family: Italianno;
+    src: url(https://fonts.googleapis.com/css2?family=Italianno&display=swap);
+    }
