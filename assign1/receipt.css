@@ -1,7 +1,4 @@
-@font-face {
-    font-family: Crete;
-    src: url("https://fonts.googleapis.com/css2?family=Crete+Round&display=swap");
-}
+@import url("https://fonts.googleapis.com/css2?family=Crete+Round&display=swap");
 
 div.receipt {
     width: 35vw;
@@ -13,7 +10,7 @@ div.receipt {
     margin: 0 auto;
     border-width: 1px;
     border-style: solid;
-    font-family: Crete;
+    font-family: 'Crete Round', Courier, monospace;
 }
 
 div.receipt > h1 {
@@ -52,7 +49,9 @@ div.item:first-child {
 
 div.item:first-child > span + span {
     padding-right: 10px;
+    padding-top: 6px;
     font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
     float: right;
     color: gray;
 }
@@ -66,7 +65,7 @@ div.receipt > div.receipt-footer {
     padding-top: 10px;
     padding-bottom: 10px;
     background-color: #F0f0f1;
-    font-family: Crete;
+    font-family: 'Crete Round', Courier, monospace;
     color: #A4a4a8;
     font-size: 22px;
     font-weight: bold;
@@ -80,8 +79,9 @@ div.receipt > div.receipt-footer > div.sub-total {
 
 div.receipt > div.receipt-footer > div.sub-total > span + span {
     float: right;
-    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
     padding-right: 30px;
+    padding-top: 3px;
 }
 
 div.receipt > div.receipt-footer > div.sub-total > span + span::before {
@@ -96,8 +96,9 @@ div.receipt > div.receipt-footer > div.tax {
 
 div.receipt > div.receipt-footer > div.tax > span + span {
     float: right;
-    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
     padding-right: 30px;
+    padding-top: 3px;
 }
 
 div.receipt > div.receipt-footer > div.tax > span + span::before {
@@ -114,8 +115,9 @@ div.receipt > div.receipt-footer > div.total {
 
 div.receipt > div.receipt-footer > div.total > span + span {
     float: right;
-    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
     padding-right: 30px;
+    padding-top: 3px;
 }
 
 div.receipt > div.receipt-footer > div.total > span + span::before {
@@ -123,7 +125,7 @@ div.receipt > div.receipt-footer > div.total > span + span::before {
 }
 
 div.receipt > div.receipt-printer {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Crete Round', Courier, monospace;
     font-size: 30px;
     font-weight: bold;
     padding-top: 40px;
