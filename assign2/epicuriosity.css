@@ -1,6 +1,4 @@
 body {
-    background-image: url('./assets/food.jpg');
-    background-size: cover;
     margin: 0;
 }
 
@@ -53,16 +51,20 @@ nav.top-nav-bar > ul > li:first-of-type > a:hover:first-letter{
     color: black;
 }
 
-div.emphasis-text {
+div.top-section {
+    background-image: url('./assets/food.jpg');
+    background-size: cover;
+    width: 100vw;
     border: 2px;
     border-style: solid;
     border-color: blue;
-    height: 450px;
+    height: 60vh;
+    min-height: 200px;
     display: flex;
     flex-direction: column;
 }
 
-div.emphasis-text > em {
+div.top-section > em {
     padding-left: 20px;
     padding-bottom: 15px;
     font-style: normal;
@@ -73,8 +75,10 @@ div.recent-recipes-container {
     border: 2px;
     border-style: solid;
     border-color: red;
-    height: 450px;
+    height: 60vh;
+    width: 100vw;
     background-color: white;
+    overflow: scroll;
     display: flex;
 }
 
@@ -86,12 +90,29 @@ div.recent-recipes-container > ol > li > div.recipe {
     border: 2px;
     border-style: solid;
     border-color: purple;
-    overflow: visible;
+    background-color: rgb(247, 247, 247);
     height: 400px;
-    width: 300px;
+    width: 30vw;
+    overflow: scroll;
+    text-align: center;
 }
 
-img {
-    width: 100px;
-    height: 200px;
+div.recent-recipes-container > ol > li > div.recipe > img {
+    width: 80%;
+    height: 60%;
+    display: inline-block;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 1px;
+    margin-top: 4px;
+}
+
+div.recent-recipes-container > ol > li > div.recipe > p {
+    display: inline-block;
+    width: 80%;
+}
+
+div.recent-recipes-container > ol > li > div.recipe > button {
+    display: inline-block;
+    width: 80%;
 }
