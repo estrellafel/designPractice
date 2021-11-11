@@ -1,1 +1,97 @@
-.
+body {
+    background-image: url('./assets/food.jpg');
+    background-size: cover;
+    margin: 0;
+}
+
+nav.top-nav-bar {
+    font-size: 22px;
+    width: 100vw;
+    height: 50px;
+    background-color: orange;
+    margin-top: 10px;
+    color: black;
+}
+
+nav.top-nav-bar > ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+  
+nav.top-nav-bar > ul > li {
+    float: left;
+    display: block;
+    padding-top: 12px;
+    padding-bottom: 11px;
+    padding-right: 35px;
+}
+
+nav.top-nav-bar > ul > li:first-of-type {
+    float: left;
+    display: block;
+    padding-left: 10px;
+}
+  
+nav.top-nav-bar > ul > li > a {
+    display: block;
+    color: white;
+    text-decoration: none;
+}
+
+nav.top-nav-bar > ul > li:first-of-type > a::first-letter {
+    display: inline-block;
+    border-radius: 50%;
+    background-color: black;
+    padding: 10px;
+    text-align: center;
+}
+
+nav.top-nav-bar > ul > li:first-of-type > a:hover:first-letter{
+    background-color: white;
+    color: black;
+}
+
+div.emphasis-text {
+    border: 2px;
+    border-style: solid;
+    border-color: blue;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+}
+
+div.emphasis-text > em {
+    padding-left: 20px;
+    padding-bottom: 15px;
+    font-style: normal;
+    font-size: 60px;
+}
+
+div.recent-recipes-container {
+    border: 2px;
+    border-style: solid;
+    border-color: red;
+    height: 450px;
+    background-color: white;
+    display: flex;
+}
+
+div.recent-recipes-container > ol {
+    list-style-type: none;
+}
+
+div.recent-recipes-container > ol > li > div.recipe {
+    border: 2px;
+    border-style: solid;
+    border-color: purple;
+    overflow: visible;
+    height: 400px;
+    width: 300px;
+}
+
+img {
+    width: 100px;
+    height: 200px;
+}
