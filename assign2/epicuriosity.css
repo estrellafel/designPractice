@@ -1,8 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Praise&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Praise&family=Tinos&display=swap');
+
 body {
-    margin: 0;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    font-family: 'Tinos', serif;
 }
 
-nav.top-nav-bar {
+div.main-content {
+    height: 120vh;
+}
+
+div.main-content > div.top-section > nav.top-nav-bar {
     font-size: 22px;
     width: 100vw;
     height: 50px;
@@ -11,14 +22,14 @@ nav.top-nav-bar {
     color: black;
 }
 
-nav.top-nav-bar > ul {
+div.main-content > div.top-section > nav.top-nav-bar > ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
 }
   
-nav.top-nav-bar > ul > li {
+div.main-content > div.top-section > nav.top-nav-bar > ul > li {
     float: left;
     display: block;
     padding-top: 12px;
@@ -27,39 +38,41 @@ nav.top-nav-bar > ul > li {
     font-variant: small-caps;
 }
 
-nav.top-nav-bar > ul > li:first-of-type {
+div.main-content > div.top-section > nav.top-nav-bar > ul > li:first-of-type {
     float: left;
     display: block;
     padding-left: 10px;
+    font-family: 'Praise', cursive;
 }
   
-nav.top-nav-bar > ul > li > a {
+div.main-content > div.top-section > nav.top-nav-bar > ul > li > a {
     display: block;
     color: black;
     text-decoration: none;
 }
 
-nav.top-nav-bar > ul > li + li > a:hover {
+div.main-content > div.top-section > nav.top-nav-bar > ul > li + li > a:hover {
     color: white;
     cursor: pointer;
 }
 
-nav.top-nav-bar > ul > li:first-of-type > a::first-letter {
+div.main-content > div.top-section > nav.top-nav-bar > ul > li:first-of-type > a::first-letter {
     display: inline-block;
     border-radius: 50%;
     background-color: black;
     padding: 10px;
     color: white;
     text-align: center;
+    margin-right: 4px;
 }
 
-nav.top-nav-bar > ul > li:first-of-type > a:hover:first-letter{
+div.main-content > div.top-section > nav.top-nav-bar > ul > li:first-of-type > a:hover:first-letter{
     background-color: white;
     color: black;
     cursor: pointer;
 }
 
-div.top-section {
+div.main-content > div.top-section {
     background-image: url('./assets/food.jpg');
     background-size: cover;
     width: 100vw;
@@ -69,25 +82,25 @@ div.top-section {
     flex-direction: column;
 }
 
-div.top-section > em {
+div.main-content > div.top-section > em {
     padding-left: 20px;
     padding-bottom: 15px;
     font-style: normal;
     font-size: 60px;
 }
 
-div.recent-recipes-container {
+div.main-content > div.recent-recipes-container {
     height: 60vh;
     width: 100vw;
     background-color: white;
-    overflow: scroll;
 }
 
-div.recent-recipes-container > h1 {
+div.main-content > div.recent-recipes-container > h1 {
     margin-left: 40px;
+    font-size: 32px;
 }
 
-div.recent-recipes-container > ol {
+div.main-content > div.recent-recipes-container > ol {
     list-style-type: none;
     flex-direction: row;
     display: flex;
@@ -96,7 +109,7 @@ div.recent-recipes-container > ol {
     justify-content: left;
 }
 
-div.recent-recipes-container > ol > li {
+div.main-content > div.recent-recipes-container > ol > li {
     border: 1px;
     border-style: solid;
     border-color: black;
@@ -110,7 +123,11 @@ div.recent-recipes-container > ol > li {
     display: inline-block;
 }
 
-div.recent-recipes-container > ol > li > img {
+div.main-content > div.recent-recipes-container > ol > li:last-of-type {
+    margin-bottom: 200px;
+}
+
+div.main-content > div.recent-recipes-container > ol > li > img {
     width: 80%;
     height: 60%;
     display: inline-block;
@@ -121,12 +138,12 @@ div.recent-recipes-container > ol > li > img {
     box-shadow: 3px 5px 6px black;
 }
 
-div.recent-recipes-container > ol > li > img:hover {
+div.main-content > div.recent-recipes-container > ol > li > img:hover {
     filter: brightness(1.25);
     cursor: pointer;
 }
 
-div.recent-recipes-container > ol > li > p {
+div.main-content > div.recent-recipes-container > ol > li > p {
     width: 80%;
     height: 80px;
     text-align: center;
@@ -134,16 +151,101 @@ div.recent-recipes-container > ol > li > p {
     font-size: 16px;
 }
 
-div.recent-recipes-container > ol > li > button {
+div.main-content > div.recent-recipes-container > ol > li > a >button {
     border-radius: 0;
     border-color: black;
     background-color: orange;
     width: 80%;
     height: 25px;
+    font-size: 16px;
 }
 
-div.recent-recipes-container > ol > li > button:hover {
+div.main-content > div.recent-recipes-container > ol > li > a > button:hover {
     background-color: rgb(190, 133, 28);
     color: white;
     cursor: pointer;
+}
+
+footer.main-footer {
+    border-top: 5px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 0px;
+    border-style: solid;
+    border-color: black;
+    background-color: orange;
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+}
+
+footer.main-footer > div.mission-statement {
+    float: left;
+    width: 50%;
+}
+
+footer.main-footer > div.connect-with-us {
+    float: left;
+    height: 90px;
+    width: 50%;
+}
+
+
+footer.main-footer > div.mission-statement > h1 {
+    margin: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 10px;
+    font-size: 24px;
+}
+
+footer.main-footer > div.mission-statement > p {
+    margin: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 10px;
+    font-size: 16px;
+}
+
+footer.main-footer > div.connect-with-us > h1 {
+    margin: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 10px;
+    font-size: 24px;
+}
+
+footer.main-footer > div.connect-with-us > a {
+    margin: 0px;
+    padding-right: 10px;
+    padding-top: 0px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    font-size: 20px;
+    color: black;
+    text-decoration: none;
+}
+
+footer.main-footer > div.connect-with-us > a:hover {
+    color: blue;
+}
+
+footer.main-footer > p {
+    display: inline-block;
+    vertical-align: bottom;
+    width: 100vw;
+    top: 0px;
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+    margin-right: 0px;
+    margin-top: 10px;
+    font-size: 16px;
 }
