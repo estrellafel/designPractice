@@ -24,6 +24,7 @@ nav.top-nav-bar > ul > li {
     padding-top: 12px;
     padding-bottom: 11px;
     padding-right: 35px;
+    font-variant: small-caps;
 }
 
 nav.top-nav-bar > ul > li:first-of-type {
@@ -34,8 +35,13 @@ nav.top-nav-bar > ul > li:first-of-type {
   
 nav.top-nav-bar > ul > li > a {
     display: block;
-    color: white;
+    color: black;
     text-decoration: none;
+}
+
+nav.top-nav-bar > ul > li + li > a:hover {
+    color: white;
+    cursor: pointer;
 }
 
 nav.top-nav-bar > ul > li:first-of-type > a::first-letter {
@@ -43,21 +49,20 @@ nav.top-nav-bar > ul > li:first-of-type > a::first-letter {
     border-radius: 50%;
     background-color: black;
     padding: 10px;
+    color: white;
     text-align: center;
 }
 
 nav.top-nav-bar > ul > li:first-of-type > a:hover:first-letter{
     background-color: white;
     color: black;
+    cursor: pointer;
 }
 
 div.top-section {
     background-image: url('./assets/food.jpg');
     background-size: cover;
     width: 100vw;
-    border: 2px;
-    border-style: solid;
-    border-color: blue;
     height: 60vh;
     min-height: 200px;
     display: flex;
@@ -72,32 +77,40 @@ div.top-section > em {
 }
 
 div.recent-recipes-container {
-    border: 2px;
-    border-style: solid;
-    border-color: red;
     height: 60vh;
     width: 100vw;
     background-color: white;
     overflow: scroll;
-    display: flex;
+}
+
+div.recent-recipes-container > h1 {
+    margin-left: 40px;
 }
 
 div.recent-recipes-container > ol {
     list-style-type: none;
+    flex-direction: row;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: left;
 }
 
-div.recent-recipes-container > ol > li > div.recipe {
-    border: 2px;
+div.recent-recipes-container > ol > li {
+    border: 1px;
     border-style: solid;
-    border-color: purple;
+    border-color: black;
     background-color: rgb(247, 247, 247);
     height: 400px;
     width: 30vw;
-    overflow: scroll;
+    min-width: 275px;
     text-align: center;
+    margin-right: 10px;
+    margin-bottom: 30px;
+    display: inline-block;
 }
 
-div.recent-recipes-container > ol > li > div.recipe > img {
+div.recent-recipes-container > ol > li > img {
     width: 80%;
     height: 60%;
     display: inline-block;
@@ -105,14 +118,32 @@ div.recent-recipes-container > ol > li > div.recipe > img {
     border-style: solid;
     border-width: 1px;
     margin-top: 4px;
+    box-shadow: 3px 5px 6px black;
 }
 
-div.recent-recipes-container > ol > li > div.recipe > p {
-    display: inline-block;
-    width: 80%;
+div.recent-recipes-container > ol > li > img:hover {
+    filter: brightness(1.25);
+    cursor: pointer;
 }
 
-div.recent-recipes-container > ol > li > div.recipe > button {
-    display: inline-block;
+div.recent-recipes-container > ol > li > p {
     width: 80%;
+    height: 80px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+}
+
+div.recent-recipes-container > ol > li > button {
+    border-radius: 0;
+    border-color: black;
+    background-color: orange;
+    width: 80%;
+    height: 25px;
+}
+
+div.recent-recipes-container > ol > li > button:hover {
+    background-color: rgb(190, 133, 28);
+    color: white;
+    cursor: pointer;
 }
