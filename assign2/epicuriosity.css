@@ -65,13 +65,17 @@ div.main-content > div.top-section > nav.top-nav-bar > ul > li:first-of-type > a
     display: inline-block;
     border-radius: 50%;
     background-color: black;
-    padding: 10px;
+    padding: 6px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 4px;
+    padding-bottom: 4px;
     color: white;
     text-align: center;
     margin-right: 4px;
 }
 
-div.main-content > div.top-section > nav.top-nav-bar > ul > li:first-of-type > a:hover:first-letter {
+div.main-content > div.top-section > nav.top-nav-bar > ul > li:first-of-type > a:hover::first-letter {
     background-color: white;
     color: black;
     cursor: pointer;
