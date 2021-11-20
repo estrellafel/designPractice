@@ -105,6 +105,17 @@ function decode(data) {
 }
 
 function allAnagrams(words) {
+    let vals = words.split(' ');
+    let first = vals[0].split('').sort().join('');
+    for (let i = 1; i < vals.length; i++) {
+        if (first != vals[i].split('').sort().join('')) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function props(list, propertyName) {
     
 }
 
@@ -118,3 +129,10 @@ function allAnagrams(words) {
 // console.log(oddlyEven( '#:*****:##' ));
 // console.log(oddlyEven( 'CS' ));
 // console.log(oddlyEven( oddlyEven(318) ));
+
+// console.log(allAnagrams("naps pans span"));
+// console.log(allAnagrams(""));
+// console.log(allAnagrams("part tarp rappt"));
+// console.log(allAnagrams("span span"));
+// console.log(allAnagrams("spear pears parse pares reaps"));
+
