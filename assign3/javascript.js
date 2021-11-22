@@ -116,23 +116,113 @@ function allAnagrams(words) {
 }
 
 function props(list, propertyName) {
-    
+    let retVals = [];
+    for (let i = 0; i < list.length; i++) {
+        retVals.push(list[i][propertyName]);
+    }
+    return retVals;
 }
 
-// console.log(eligibility( 35, 'CA', true, 3));
-// console.log(eligibility( 61, 'wi', true, 3));
-// console.log(eligibility( 38, 'WI', false ));
+function grouper(xs, n) {
+    let retVal = [];
+    let group = [];
+    for (let i = 0; i < xs.length; i = i + n) {
+        for (let j = 0; j < n; j++) {
+            if (xs[i + j] != undefined) {
+                group.push(xs[i + j]);
+            }
+        }
+        retVal.push(group);
+        group = [];
+    }
+    return retVal;
+}
 
-// console.log(oddlyEven( 18 ));
-// console.log(oddlyEven( -3 ));
-// console.log(oddlyEven( 183 ));
-// console.log(oddlyEven( '#:*****:##' ));
-// console.log(oddlyEven( 'CS' ));
-// console.log(oddlyEven( oddlyEven(318) ));
+function sequence(start, step) {
+    let count = 0;
+    return () => {
+        let retVal = start + step * count;
+        count++;
+        return retVal;
+    };
+}
 
-// console.log(allAnagrams("naps pans span"));
-// console.log(allAnagrams(""));
-// console.log(allAnagrams("part tarp rappt"));
-// console.log(allAnagrams("span span"));
-// console.log(allAnagrams("spear pears parse pares reaps"));
+function repeat(text, n) {
+    let retVal = '';
+    for (let i = 0; i < n; i++) {
+        retVal = retVal + text;
+    }
+    return retVal;
+}
 
+function repeatf(f, n) {
+    let retVal = [];
+    for (let i = 0; i < n; i++) {
+        retVal.push(f());
+    }
+    return retVal;
+}
+
+function matchmaker(obj) {
+    let keys = Object.keys(obj);
+    return (input) => {
+        for (let i = 0; i < keys.length; i++) {
+            if (input[keys[i]] != obj[keys[i]]) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+function breakup(list , partitioner) {
+    let retVal = {};
+    for (let i = 0; i < list.length; i++) {
+        let val = partitioner(list[i]);
+        if (retVal[val] == undefined) {
+            retVal[val] = [];
+        }
+        retVal[val].push(list[i]);
+    }
+    return retVal;
+}
+
+function none(list, predicate) {
+    for (let i = 0; i < list.length; i++) {
+        if (predicate(list[i]) == true) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function noSql(list, query) {
+    let retVal = [];
+    let keys = Object.keys(query);
+    for (let i = 0; i < list.length; i++) {
+        let same = true;
+        for (let j = 0; j< keys.length; j++) {
+            if (list[i][keys[j]] != query[keys[j]]) {
+                same = false;
+            }
+        }
+        if (same == true) {
+            retVal.push(list[i]);
+        }
+    }
+    return retVal;
+}
+
+function myChoice(items) {
+    let val = Math.floor(Math.random() * items.length);
+    return (...args) => {
+        if (args[0] == 'rechoose') {
+            let newRand = Math.floor(Math.random() * items.length);
+            while (newRand == val) {
+                newRand = Math.floor(Math.random() * items.length);
+            }
+            val = newRand;
+        }
+        return items[val];
+    };
+}
