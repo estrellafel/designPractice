@@ -1,0 +1,21 @@
+#teams {
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+th, td {
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    border-collapse: collapse;
+    width: 15vw;
+    text-align: center !important;
+}
+
+tr:hover {
+    background-color: rgb(189, 184, 209);
+    cursor: pointer;
+}
