@@ -96,13 +96,32 @@ function hideTable() {
     div.style.display = 'none';
 }
 
+function showTable() {
+    div = document.getElementById('teams-container');
+    div.style.display = 'inline';
+}
+
 function showForm() {
     form = document.getElementById('games-container');
     form.style.display = 'inline';
+
+    forms = document.getElementsByClassName('form-inline');
+    console.log(forms);
+    forms.forEach( i => {
+        i.addEventListener('onsubmit', (event) => {
+            event.preventDefault();
+        });
+    });
+}
+
+function hideForm() {
+    form = document.getElementById('games-container');
+    form.style.display = 'none';
 }
 
 function makeTeamHead(team) {
     thead = document.createElement('thead');
+    thead.id = 'gamesHead';
     tr = document.createElement('tr');
     params = ['Home', 'Score', 'Away', 'Score', 'Date', 'Result'];
     params.forEach(i => {
@@ -118,6 +137,7 @@ function makeTeamHead(team) {
 
 function makeTeamCaption(team) {
     caption = document.createElement('caption');
+    caption.id = 'gamesCaption';
     text = document.createTextNode(team['name']);
     caption.appendChild(text);
     table = document.getElementById('games');
@@ -180,6 +200,7 @@ function getBody(games, team) {
 }
 
 function checkForm(team) {
+    userInput(team);
     wins(team);
     losses(team);
     ties(team);
@@ -189,114 +210,138 @@ function checkForm(team) {
 function wins(team) {
     radio = document.getElementById('winsOnly');
     radio.addEventListener('click', () => {
+        disableRadio();
         cleanGameTable();
         baller.getGames(team['id'], (err, games) => {
-            arr = [];
-            for (let i = 0; i < games.length; i++) {
-                if (games[i]['home']['id'] == team['id']) {
-                    if (games[i]['homeScore'] > games[i]['awayScore']) {
-                        arr.push(games[i]);
-                    }
-                } else {
-                    if (games[i]['awayScore'] > games[i]['homeScore']) {
-                        arr.push(games[i]);
-                    }
-                }
-            }
-            games = arr;
-            games.sort((first, second) => {
-                if (first['date'] > second['date']) {
-                    return -1;
-                } else {
-                    return 1;
-                }
-            });
-            tbody = getBody(games, team);
-            tbody.id = 'gamesBody';
-            table = document.getElementById('games');
-            table.appendChild(tbody);
+            winsHelper(team, games);
         });
     });
+}
+
+function winsHelper(team, games) {
+    arr = [];
+    for (let i = 0; i < games.length; i++) {
+        if (games[i]['home']['id'] == team['id']) {
+            if (games[i]['homeScore'] > games[i]['awayScore']) {
+                arr.push(games[i]);
+            }
+        } else {
+            if (games[i]['awayScore'] > games[i]['homeScore']) {
+                arr.push(games[i]);
+            }
+        }
+    }
+    games = arr;
+    games.sort((first, second) => {
+        if (first['date'] > second['date']) {
+            return -1;
+        } else {
+            return 1;
+        }
+    });
+    tbody = getBody(games, team);
+    tbody.id = 'gamesBody';
+    table = document.getElementById('games');
+    table.appendChild(tbody);
+    enableRadio();
 }
 
 function losses(team) {
     radio = document.getElementById('lossesOnly');
     radio.addEventListener('click', () => {
+        disableRadio();
         cleanGameTable();
         baller.getGames(team['id'], (err, games) => {
-            arr = [];
-            for (let i = 0; i < games.length; i++) {
-                if (games[i]['home']['id'] == team['id']) {
-                    if (games[i]['homeScore'] < games[i]['awayScore']) {
-                        arr.push(games[i]);
-                    }
-                } else {
-                    if (games[i]['awayScore'] < games[i]['homeScore']) {
-                        arr.push(games[i]);
-                    }
-                }
-            }
-            games = arr;
-            games.sort((first, second) => {
-                if (first['date'] > second['date']) {
-                    return -1;
-                } else {
-                    return 1;
-                }
-            });
-            tbody = getBody(games, team);
-            tbody.id = 'gamesBody';
-            table = document.getElementById('games');
-            table.appendChild(tbody);
+            lossesHelper(team, games);
         });
     });
+}
+
+function lossesHelper(team, games) {
+    arr = [];
+    for (let i = 0; i < games.length; i++) {
+        if (games[i]['home']['id'] == team['id']) {
+            if (games[i]['homeScore'] < games[i]['awayScore']) {
+                arr.push(games[i]);
+            }
+        } else {
+            if (games[i]['awayScore'] < games[i]['homeScore']) {
+                arr.push(games[i]);
+            }
+        }
+    }
+    games = arr;
+    games.sort((first, second) => {
+        if (first['date'] > second['date']) {
+            return -1;
+        } else {
+            return 1;
+        }
+    });
+    tbody = getBody(games, team);
+    tbody.id = 'gamesBody';
+    table = document.getElementById('games');
+    table.appendChild(tbody);
+    enableRadio();
 }
 
 function ties(team) {
     radio = document.getElementById('tiesOnly');
     radio.addEventListener('click', () => {
+        disableRadio();
         cleanGameTable();
         baller.getGames(team['id'], (err, games) => {
-            arr = [];
-            for (let i = 0; i < games.length; i++) {
-                if (games[i]['homeScore'] == games[i]['awayScore']) {
-                    arr.push(games[i]);
-                }
-            }
-            games = arr;
-            games.sort((first, second) => {
-                if (first['date'] > second['date']) {
-                    return -1;
-                } else {
-                    return 1;
-                }
-            });
-            tbody = getBody(games, team);
-            tbody.id = 'gamesBody';
-            table = document.getElementById('games');
-            table.appendChild(tbody);
+            tiesHelper(team, games);
         });
     });
+}
+
+function tiesHelper(team, games) {
+    arr = [];
+    for (let i = 0; i < games.length; i++) {
+        if (games[i]['homeScore'] == games[i]['awayScore']) {
+            arr.push(games[i]);
+        }
+    }
+    games = arr;
+    games.sort((first, second) => {
+        if (first['date'] > second['date']) {
+            return -1;
+        } else {
+            return 1;
+        }
+    });
+    tbody = getBody(games, team);
+    tbody.id = 'gamesBody';
+    table = document.getElementById('games');
+    table.appendChild(tbody);
+    enableRadio();
 }
 
 function all(team) {
     radio = document.getElementById('all');
     radio.addEventListener('click', () => {
+        disableRadio();
         cleanGameTable();
         baller.getGames(team['id'], (err, games) => {
-            games.sort((first, second) => {
-                if (first['date'] > second['date']) {
-                    return -1;
-                } else {
-                    return 1;
-                }
-            });
-            tbody = getBody(games, team);
-            tbody.id = 'gamesBody';
-            table = document.getElementById('games');
-            table.appendChild(tbody);
+            allHelper(team, games);
         });
     });
+}
+
+function allHelper(team, games) {
+    games.sort((first, second) => {
+        if (first['date'] > second['date']) {
+            return -1;
+        } else {
+            return 1;
+        }
+    });
+    tbody = getBody(games, team);
+    tbody.id = 'gamesBody';
+    table = document.getElementById('games');
+    table.appendChild(tbody);
+    enableRadio();
 }
 
 function start(team) {
@@ -317,8 +362,114 @@ function start(team) {
 
 function cleanGameTable() {
     tbody = document.getElementById('gamesBody');
-    while(tbody) {
+    while (tbody) {
         tbody.remove();
         tbody = document.getElementById('gamesBody');
     }
+}
+
+function disableRadio() {
+    document.getElementById('winsOnly').disabled = true;
+    document.getElementById('lossesOnly').disabled = true;
+    document.getElementById('tiesOnly').disabled = true;
+    document.getElementById('all').disabled = true;
+}
+
+function enableRadio() {
+    document.getElementById('winsOnly').disabled = false;
+    document.getElementById('lossesOnly').disabled = false;
+    document.getElementById('tiesOnly').disabled = false;
+    document.getElementById('all').disabled = false;
+}
+
+function userInput(team) {
+    textBox = document.getElementById('searchField');
+    textBox.addEventListener('change', (event) => {
+        if (document.getElementById('winsOnly').checked) {
+            cleanGameTable();
+            baller.getGames(team['id'], (err, games) => {
+                games = takeOutByName(games, textBox);
+                winsHelper(team, games);
+            });
+        } else if (document.getElementById('lossesOnly').checked) {
+            cleanGameTable();
+            baller.getGames(team['id'], (err, games) => {
+                games = takeOutByName(games, textBox);
+                lossesHelper(team, games);
+            });
+        } else if (document.getElementById('tiesOnly').checked) {
+            cleanGameTable();
+            baller.getGames(team['id'], (err, games) => {
+                games = takeOutByName(games, textBox);
+                tiesHelper(team, games);
+            });
+        } else if (document.getElementById('all').checked) {
+            cleanGameTable();
+            baller.getGames(team['id'], (err, games) => {
+                games = takeOutByName(games, textBox);
+                allHelper(team, games);
+            });
+        }
+    });
+}
+
+
+function takeOutByName(games, textBox) {
+    arr = [];
+    for (let i = 0; i < games.length; i++) {
+        if (games[i]['home']['name'].toLowerCase().includes(textBox.value.toLowerCase())) {
+            arr.push(games[i]);
+        } else if (games[i]['away']['name'].toLowerCase().includes(textBox.value.toLowerCase())) {
+            arr.push(games[i]);
+        }
+    }
+    return arr;
+}
+
+function revert(event) {
+    hideForm();
+    removeCaption();
+    removeHead();
+    cleanGameTable();
+    removeEvents()
+    showTable();
+}
+
+function removeCaption() {
+    caption = document.getElementById('gamesCaption');
+    if (caption) {
+        caption.remove();
+    }
+}
+
+function removeHead() {
+    head = document.getElementById('gamesHead');
+    if (head) {
+        head.remove();
+    }
+}
+
+
+// Delete the event listeners
+function removeEvents() {
+    let old = document.getElementById('winsOnly');
+    let newN = old.cloneNode(true);
+    old.parentNode.replaceChild(newN, old);
+    old.remove();
+
+    old = document.getElementById('lossesOnly');
+    newN = old.cloneNode(true);
+    old.parentNode.replaceChild(newN, old);
+    old.remove();
+
+    old = document.getElementById('tiesOnly');
+    newN = old.cloneNode(true);
+    old.parentNode.replaceChild(newN, old);
+    old.remove();
+
+    old = document.getElementById('all');
+    newN = old.cloneNode(true);
+    old.parentNode.replaceChild(newN, old);
+    old.remove();
+    newN.checked = true;
 }

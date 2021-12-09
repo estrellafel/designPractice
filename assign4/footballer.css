@@ -19,3 +19,7 @@ th, td {
     background-color: rgb(189, 184, 209);
     cursor: pointer;
 }
+
+.radio[disabled] {
+    background-color: #FFFFFF;
+}
