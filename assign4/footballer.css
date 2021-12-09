@@ -15,7 +15,7 @@ th, td {
     text-align: center !important;
 }
 
-tr:hover {
+.container > #teams-container > table > tbody > tr:hover {
     background-color: rgb(189, 184, 209);
     cursor: pointer;
 }
