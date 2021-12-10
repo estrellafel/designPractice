@@ -430,7 +430,6 @@ function revert(event) {
     removeHead();
     cleanGameTable();
     removeEvents();
-    resetFormText();
     showTable();
 }
 
@@ -471,9 +470,10 @@ function removeEvents() {
     old.parentNode.replaceChild(newN, old);
     old.remove();
     newN.checked = true;
-}
 
-function resetFormText() {
-    let input = document.getElementById('searchField');
-    input.value = '';
+    old = document.getElementById('searchField');
+    newN = old.cloneNode(true);
+    old.parentNode.replaceChild(newN, old);
+    old.remove();
+    newN.value = '';
 }
