@@ -429,7 +429,8 @@ function revert(event) {
     removeCaption();
     removeHead();
     cleanGameTable();
-    removeEvents()
+    removeEvents();
+    resetFormText();
     showTable();
 }
 
@@ -470,4 +471,9 @@ function removeEvents() {
     old.parentNode.replaceChild(newN, old);
     old.remove();
     newN.checked = true;
+}
+
+function resetFormText() {
+    let input = document.getElementById('searchField');
+    input.value = '';
 }
