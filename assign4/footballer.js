@@ -2,10 +2,10 @@
 document.addEventListener('DOMContentLoaded', generateTeamsTable);
 
 function generateTeamsTable() {
-    table = document.getElementById('teams');
+    let table = document.getElementById('teams');
 
-    thead = document.createElement('thead');
-    headTr = mainHead();
+    let thead = document.createElement('thead');
+    let headTr = mainHead();
     thead.appendChild(headTr);
 
     baller.getTeams( (Null, teams) => {
@@ -33,8 +33,8 @@ function generateTeamsTable() {
         });
 
         teams.forEach(team => {
-            tbody = document.createElement('tbody');
-            tr = mainBody(team);
+            let tbody = document.createElement('tbody');
+            let tr = mainBody(team);
             
             tr.addEventListener('click', () => {
                 hideTable();
@@ -52,11 +52,11 @@ function generateTeamsTable() {
 }
 
 function mainHead() {
-    headTr = document.createElement('tr');
-    list = ['City', 'Name', 'Wins', 'Losses', 'Ties','Points'];
+    let headTr = document.createElement('tr');
+    let list = ['City', 'Name', 'Wins', 'Losses', 'Ties','Points'];
     list.filter( x => {
-        th = document.createElement('th');
-        text = document.createTextNode(x);
+        let th = document.createElement('th');
+        let text = document.createTextNode(x);
         th.appendChild(text);
         headTr.appendChild(th);
     });
@@ -64,27 +64,27 @@ function mainHead() {
 }
 
 function mainBody(team) {
-    tr = document.createElement('tr');
-    params = ['city', 'name'];
+    let tr = document.createElement('tr');
+    let params = ['city', 'name'];
     params.forEach(i => {
-        th = document.createElement('th');
-        text = document.createTextNode(team[i]);
+        let th = document.createElement('th');
+        let text = document.createTextNode(team[i]);
         th.appendChild(text);
         tr.appendChild(th);
      });
 
-    stat = team['stats'];
+    let stat = team['stats'];
     params = ['wins', 'losses', 'ties'];
     params.forEach(i => {
-        th = document.createElement('th');
-        text = document.createTextNode(stat[i]);
+        let th = document.createElement('th');
+        let text = document.createTextNode(stat[i]);
         th.appendChild(text);
         tr.appendChild(th);
     });
 
-    points = (stat['wins'] * 2) + (stat['ties']);
-    th = document.createElement('th');
-    text = document.createTextNode(points);
+    let points = (stat['wins'] * 2) + (stat['ties']);
+    let th = document.createElement('th');
+    let text = document.createTextNode(points);
     th.appendChild(text);
     tr.appendChild(th);
 
@@ -92,65 +92,63 @@ function mainBody(team) {
 }
 
 function hideTable() {
-    div = document.getElementById('teams-container');
+    let div = document.getElementById('teams-container');
     div.style.display = 'none';
 }
 
 function showTable() {
-    div = document.getElementById('teams-container');
+    let div = document.getElementById('teams-container');
     div.style.display = 'inline';
 }
 
 function showForm() {
-    form = document.getElementById('games-container');
+    let form = document.getElementById('games-container');
     form.style.display = 'inline';
 
-    forms = document.getElementsByClassName('form-inline');
-    console.log(forms);
-    forms.forEach( i => {
-        i.addEventListener('onsubmit', (event) => {
-            event.preventDefault();
-        });
+    form = document.getElementsByClassName('form-inline')[0];
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
     });
+
 }
 
 function hideForm() {
-    form = document.getElementById('games-container');
+    let form = document.getElementById('games-container');
     form.style.display = 'none';
 }
 
 function makeTeamHead(team) {
-    thead = document.createElement('thead');
+    let thead = document.createElement('thead');
     thead.id = 'gamesHead';
-    tr = document.createElement('tr');
-    params = ['Home', 'Score', 'Away', 'Score', 'Date', 'Result'];
+    let tr = document.createElement('tr');
+    let params = ['Home', 'Score', 'Away', 'Score', 'Date', 'Result'];
     params.forEach(i => {
-        td = document.createElement('td');
-        text = document.createTextNode(i);
+        let td = document.createElement('td');
+        let text = document.createTextNode(i);
         td.appendChild(text);
         tr.appendChild(td);
     });
     thead.appendChild(tr);
-    table = document.getElementById('games');
+    let table = document.getElementById('games');
     table.appendChild(thead);
 }
 
 function makeTeamCaption(team) {
-    caption = document.createElement('caption');
+    let caption = document.createElement('caption');
     caption.id = 'gamesCaption';
-    text = document.createTextNode(team['name']);
+    let text = document.createTextNode(team['name']);
     caption.appendChild(text);
-    table = document.getElementById('games');
+    let table = document.getElementById('games');
     table.appendChild(caption);
 }
 
 function getBody(games, team) {
-    tbody = document.createElement('tbody');
+    let tbody = document.createElement('tbody');
     games.forEach((game) => {
-        tr = document.createElement('tr');
+        let tr = document.createElement('tr');
 
-        td = document.createElement('td');
-        text = document.createTextNode(game['home']['name']);
+        let td = document.createElement('td');
+        let text = document.createTextNode(game['home']['name']);
         td.appendChild(text);
         tr.appendChild(td);
 
@@ -208,7 +206,7 @@ function checkForm(team) {
 }
 
 function wins(team) {
-    radio = document.getElementById('winsOnly');
+    let radio = document.getElementById('winsOnly');
     radio.addEventListener('click', () => {
         disableRadio();
         cleanGameTable();
@@ -219,7 +217,7 @@ function wins(team) {
 }
 
 function winsHelper(team, games) {
-    arr = [];
+    let arr = [];
     for (let i = 0; i < games.length; i++) {
         if (games[i]['home']['id'] == team['id']) {
             if (games[i]['homeScore'] > games[i]['awayScore']) {
@@ -239,15 +237,15 @@ function winsHelper(team, games) {
             return 1;
         }
     });
-    tbody = getBody(games, team);
+    let tbody = getBody(games, team);
     tbody.id = 'gamesBody';
-    table = document.getElementById('games');
+    let table = document.getElementById('games');
     table.appendChild(tbody);
     enableRadio();
 }
 
 function losses(team) {
-    radio = document.getElementById('lossesOnly');
+    let radio = document.getElementById('lossesOnly');
     radio.addEventListener('click', () => {
         disableRadio();
         cleanGameTable();
@@ -258,7 +256,7 @@ function losses(team) {
 }
 
 function lossesHelper(team, games) {
-    arr = [];
+    let arr = [];
     for (let i = 0; i < games.length; i++) {
         if (games[i]['home']['id'] == team['id']) {
             if (games[i]['homeScore'] < games[i]['awayScore']) {
@@ -278,7 +276,7 @@ function lossesHelper(team, games) {
             return 1;
         }
     });
-    tbody = getBody(games, team);
+    let tbody = getBody(games, team);
     tbody.id = 'gamesBody';
     table = document.getElementById('games');
     table.appendChild(tbody);
@@ -286,7 +284,7 @@ function lossesHelper(team, games) {
 }
 
 function ties(team) {
-    radio = document.getElementById('tiesOnly');
+    let radio = document.getElementById('tiesOnly');
     radio.addEventListener('click', () => {
         disableRadio();
         cleanGameTable();
@@ -297,7 +295,7 @@ function ties(team) {
 }
 
 function tiesHelper(team, games) {
-    arr = [];
+    let arr = [];
     for (let i = 0; i < games.length; i++) {
         if (games[i]['homeScore'] == games[i]['awayScore']) {
             arr.push(games[i]);
@@ -311,15 +309,15 @@ function tiesHelper(team, games) {
             return 1;
         }
     });
-    tbody = getBody(games, team);
+    let tbody = getBody(games, team);
     tbody.id = 'gamesBody';
-    table = document.getElementById('games');
+    let table = document.getElementById('games');
     table.appendChild(tbody);
     enableRadio();
 }
 
 function all(team) {
-    radio = document.getElementById('all');
+    let radio = document.getElementById('all');
     radio.addEventListener('click', () => {
         disableRadio();
         cleanGameTable();
@@ -337,9 +335,9 @@ function allHelper(team, games) {
             return 1;
         }
     });
-    tbody = getBody(games, team);
+    let tbody = getBody(games, team);
     tbody.id = 'gamesBody';
-    table = document.getElementById('games');
+    let table = document.getElementById('games');
     table.appendChild(tbody);
     enableRadio();
 }
@@ -353,15 +351,15 @@ function start(team) {
                 return 1;
             }
         });
-        tbody = getBody(games, team);
+        let tbody = getBody(games, team);
         tbody.id = 'gamesBody';
-        table = document.getElementById('games');
+        let table = document.getElementById('games');
         table.appendChild(tbody);
     });
 }
 
 function cleanGameTable() {
-    tbody = document.getElementById('gamesBody');
+    let tbody = document.getElementById('gamesBody');
     while (tbody) {
         tbody.remove();
         tbody = document.getElementById('gamesBody');
@@ -383,7 +381,7 @@ function enableRadio() {
 }
 
 function userInput(team) {
-    textBox = document.getElementById('searchField');
+    let textBox = document.getElementById('searchField');
     textBox.addEventListener('change', (event) => {
         if (document.getElementById('winsOnly').checked) {
             cleanGameTable();
@@ -415,7 +413,7 @@ function userInput(team) {
 
 
 function takeOutByName(games, textBox) {
-    arr = [];
+    let arr = [];
     for (let i = 0; i < games.length; i++) {
         if (games[i]['home']['name'].toLowerCase().includes(textBox.value.toLowerCase())) {
             arr.push(games[i]);
@@ -436,14 +434,14 @@ function revert(event) {
 }
 
 function removeCaption() {
-    caption = document.getElementById('gamesCaption');
+    let caption = document.getElementById('gamesCaption');
     if (caption) {
         caption.remove();
     }
 }
 
 function removeHead() {
-    head = document.getElementById('gamesHead');
+    let head = document.getElementById('gamesHead');
     if (head) {
         head.remove();
     }
