@@ -67,26 +67,26 @@ function mainBody(team) {
     let tr = document.createElement('tr');
     let params = ['city', 'name'];
     params.forEach(i => {
-        let th = document.createElement('th');
+        let td = document.createElement('td');
         let text = document.createTextNode(team[i]);
-        th.appendChild(text);
-        tr.appendChild(th);
+        td.appendChild(text);
+        tr.appendChild(td);
      });
 
     let stat = team['stats'];
     params = ['wins', 'losses', 'ties'];
     params.forEach(i => {
-        let th = document.createElement('th');
+        let td = document.createElement('td');
         let text = document.createTextNode(stat[i]);
-        th.appendChild(text);
-        tr.appendChild(th);
+        td.appendChild(text);
+        tr.appendChild(td);
     });
 
     let points = (stat['wins'] * 2) + (stat['ties']);
-    let th = document.createElement('th');
+    let td = document.createElement('td');
     let text = document.createTextNode(points);
-    th.appendChild(text);
-    tr.appendChild(th);
+    td.appendChild(text);
+    tr.appendChild(td);
 
     return tr;
 }
@@ -123,10 +123,10 @@ function makeTeamHead(team) {
     let tr = document.createElement('tr');
     let params = ['Home', 'Score', 'Away', 'Score', 'Date', 'Result'];
     params.forEach(i => {
-        let td = document.createElement('td');
+        let th = document.createElement('th');
         let text = document.createTextNode(i);
-        td.appendChild(text);
-        tr.appendChild(td);
+        th.appendChild(text);
+        tr.appendChild(th);
     });
     thead.appendChild(tr);
     let table = document.getElementById('games');
@@ -173,24 +173,33 @@ function getBody(games, team) {
         tr.appendChild(td);
 
         td = document.createElement('td');
+        let mark = document.createElement('mark');
+        mark.style.color = 'white';
         if (game['home']['id'] == team['id']) {
             if (game['homeScore'] > game['awayScore']) {
                 text = document.createTextNode('W');
+                mark.style.backgroundColor = 'green';
             } else if (game['awayScore'] > game['homeScore']) {
                 text = document.createTextNode('L');
+                mark.style.backgroundColor = 'red';
             } else {
                 text = document.createTextNode('T');
+                mark.style.backgroundColor = 'black';
             }
         } else {
             if (game['homeScore'] > game['awayScore']) {
                 text = document.createTextNode('L');
+                mark.style.backgroundColor = 'red';
             } else if (game['awayScore'] > game['homeScore']) {
                 text = document.createTextNode('W');
+                mark.style.backgroundColor = 'green';
             } else {
                 text = document.createTextNode('T');
+                mark.style.backgroundColor = 'black';
             }
         }
-        td.appendChild(text);
+        mark.appendChild(text);
+        td.appendChild(mark);
         tr.appendChild(td);
         tbody.appendChild(tr);
     });

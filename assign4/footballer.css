@@ -1,4 +1,4 @@
-#teams {
+#teams, #games {
     border-width: 1px;
     border-style: solid;
     border-color: black;
@@ -6,13 +6,67 @@
     text-align: center;
 }
 
-th, td {
+.container > #teams-container > table > thead > tr > th {
     border-width: 1px;
     border-style: solid;
     border-color: black;
     border-collapse: collapse;
+    text-align: center;
+    background-color: black;
+    color: white;
+    font-size: 15px;
+    height: 5vh;
+}
+
+.container > #teams-container > table > thead > tr > th:nth-child(1) {
     width: 15vw;
-    text-align: center !important;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.container > #teams-container > table > thead > tr > th:nth-child(2) {
+    width: 30vw;
+}
+
+.container > #teams-container > table > thead > tr > th:nth-child(3) {
+    width: 8vw;
+}
+
+.container > #teams-container > table > thead > tr > th:nth-child(4) {
+    width: 12vw;
+}
+
+.container > #teams-container > table > thead > tr > th:nth-child(5) {
+    width: 8vw;
+}
+
+.container > #teams-container > table > thead > tr > th:nth-child(6) {
+    width: 12vw;
+}
+
+.container > #teams-container > table > tbody > tr > td {
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    border-collapse: collapse;
+    text-align: center;
+    height: 5vh;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.container > #teams-container > table > tbody > tr > td:nth-child(1) {
+    text-align: left;
+    padding-left: 10px;
+}
+
+.container > #teams-container > table > tbody > tr > td:nth-child(2) {
+    text-align: left;
+    padding-left: 10px;
+}
+
+.container > #teams-container > table > tbody:nth-child(2n + 1), .container > #games-container > #games > tbody > tr:nth-child(2n + 1) {
+    background-color: rgb(236, 234, 234);
 }
 
 .container > #teams-container > table > tbody > tr:hover {
@@ -20,6 +74,67 @@ th, td {
     cursor: pointer;
 }
 
-.radio[disabled] {
-    background-color: #FFFFFF;
+.container > #games-container > #games > thead > tr {
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    border-collapse: collapse;
+    text-align: center;
+    background-color: black;
+    color: white;
+    font-size: 15px;
+    height: 5vh;
+}
+
+.container > #games-container > #games > thead > tr > th:nth-child(1) {
+    width: 30vw;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.container > #games-container > #games > thead > tr > th:nth-child(3) {
+    width: 30vw;
+    text-align: center;
+    padding-left: 10px;
+}
+
+.container > #games-container > #games > thead > tr > th:nth-child(2), .container > #games-container > #games > thead > tr > th:nth-child(4) {
+    width: 7vw;
+    text-align: center;
+}
+
+.container > #games-container > #games > thead > tr > th:nth-child(5) {
+    width: 11vw;
+    text-align: center;
+}
+
+.container > #games-container > #games > thead > tr > th:nth-child(6) {
+    width: 10vw;
+    text-align: center;
+}
+
+.container > #games-container > #games > tbody > tr > td {
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    border-collapse: collapse;
+    text-align: center;
+    color: black;
+    font-size: 15px;
+    height: 5vh;
+}
+
+.container > #games-container > #games > tbody > tr > td:nth-child(1) {
+    text-align: left;
+    padding-left: 10px;
+}
+
+.container > #games-container > #games > tbody > tr > td:nth-child(3) {
+    text-align: left;
+    padding-left: 10px;
+}
+
+.container > #games-container > #games > caption {
+    font-size: 2.5em;
+    color: black;
 }
